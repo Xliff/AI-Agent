@@ -1,11 +1,11 @@
 unit module AI::Agent;
 
-class DB 
+class DB
 {
 	has %.db;
 
 	method BUILD(%db = {}) {
-		.db = db;
+		%!db = %db;
 	}
 
 	method search($key) {
@@ -21,10 +21,10 @@ class DB
 		my $string = "";
 
 		for .db.kv -> $key,$value {
-			$string .= " $key";
+			$string ~= " $key";
 		}
 
 		return $string;
-	}	
+	}
 
 }

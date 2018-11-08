@@ -1,22 +1,24 @@
-unit module AI::Agent;
+use v6.c;
 
-class Agent is Actor
-{	
+use AI::Agent::Actor;
+
+class AI::Agent::Agent is AI::Agent::Actor
+{
 	has $.status;
-	
+
 	method BUILD($stat) {
-		.status = $stat;
+		$!status = $stat;
 	}
 
 	method ask(%args) {
 		return Str.new("You can ask me the following : agent, dispatch args=agent, agent instance");
-			
+
 	}
 
 	### agent dispatched, overload for other agent parsing
 	method dispatch_agent($agent) {
 		return &$agent.dispatch;
-	} 
+	}
 
 
 
